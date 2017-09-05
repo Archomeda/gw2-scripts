@@ -82,7 +82,7 @@ Promise.all([
         for (let achievement of achievements) {
             // Determine locked / unlocked status
             const accountAchievement = accountAchievements.find(a => a.id === achievement.id);
-            const skinsUnlocked = accountAchievement.bits.map(b => achievement.bits[b].id);
+            const skinsUnlocked = accountAchievement ? (accountAchievement.done ? achievement.bits.map(b => b.id) : accountAchievement.bits.map(b => achievement.bits[b].id)) : [];
             const skinsLocked = achievement.bits.filter(b => skinsUnlocked.indexOf(b.id) === -1).map(b => b.id);
 
             // Determine dungeon tokens
@@ -92,7 +92,7 @@ Promise.all([
 
             // Output
             console.log(`${achievement.name}:`);
-            console.log(` - Unlocked Skins: ${skinsUnlocked.length}/${skinsUnlocked.length + skinsLocked.length}`);
+            console.log(` - Unlocked skins: ${skinsUnlocked.length}/${skinsUnlocked.length + skinsLocked.length}`);
             console.log(` - Tokens required: ${tokensLeft.toLocaleString()} (${tokensSpent.toLocaleString()}/${(tokensSpent + tokensLeft).toLocaleString()})`);
             console.log(` - Tokens to collect: ${(tokensLeft < tokensOwned ? 0 : tokensLeft - tokensOwned).toLocaleString()} (${tokensOwned.toLocaleString()}/${tokensLeft.toLocaleString()})`);
             console.log();
