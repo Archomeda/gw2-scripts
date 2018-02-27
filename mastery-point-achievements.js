@@ -26,14 +26,8 @@ Set.prototype.difference = function(setB) {
     const api = require('gw2api-client').default();
     api.authenticate(config.get('api_key'));
 
-    const achievementIds = await api.achievements().ids();
-    const achievementIdsSplit = achievementIds
-        .map((e, i) => i % 200 === 0 ? achievementIds.slice(i, i + 200) : null)
-        .filter(i => i);
-
-    const achievements = (await Promise.all(achievementIdsSplit.map(a => api.achievements().many(a))))
-        .reduce((a, b) => a.concat(b), []);
-
+    const achievements = await api.achievements().all();
+    
     const masteriesRegion = new Map();
     const masteries = new Map();
     for (let achievement of achievements) {
