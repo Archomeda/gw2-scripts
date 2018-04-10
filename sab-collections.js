@@ -27,7 +27,7 @@ const collectionAchievements = [
 ];
 
 const sabItems = {
-    2875: [
+    2875: [ // Blue weapons
         46515, // Axe (bound)
         46533, // Dagger (bound)
         46521, // Focus (bound)
@@ -61,7 +61,7 @@ const sabItems = {
         46543, // Torch
         46541, // Warhorn
     ],
-    2880: [
+    2880: [ // Green weapons
         46551, // Axe
         46569, // Dagger
         46557, // Focus
@@ -79,7 +79,7 @@ const sabItems = {
         46560, // Torch
         46554 // Warhorn
     ],
-    2860: [
+    2860: [ // Yellow weapons
         46599, // Axe
         46617, // Dagger
         46605, // Focus
@@ -97,73 +97,73 @@ const sabItems = {
         46608, // Torch
         46602 // Warhorn
     ],
-    2867: [
+    2867: [ // Orange weapons
         78105, // Axe
         78045, // Axe (bound)
-        78029, // Axe (blue)
-        78068, // Axe (red)
+        78029, // Axe (blue infusion)
+        78068, // Axe (red infusion)
         78024, // Dagger
         78087, // Dagger (bound)
-        78110, // Dagger (blue)
-        78073, // Dagger (red)
+        78110, // Dagger (blue infusion)
+        78073, // Dagger (red infusion)
         78022, // Focus
         78066, // Focus (bound)
-        78060, // Focus (blue)
-        78102, // Focus (red)
+        78060, // Focus (blue infusion)
+        78102, // Focus (red infusion)
         78053, // Greatsword
         78106, // Greatsword (bound)
-        78037, // Greatsword (blue)
-        78059, // Greatsword (red)
+        78037, // Greatsword (blue infusion)
+        78059, // Greatsword (red infusion)
         78081, // Hammer
         78100, // Hammer (bound)
-        78051, // Hammer (blue)
-        78104, // Hammer (red)
+        78051, // Hammer (blue infusion)
+        78104, // Hammer (red infusion)
         78048, // Longbow
         78082, // Longbow (bound)
-        78020, // Longbow (blue)
-        78014, // Longbow (red)
+        78020, // Longbow (blue infusion)
+        78014, // Longbow (red infusion)
         78013, // Mace
         78021, // Mace (bound)
-        78098, // Mace (blue)
-        78056, // Mace (red)
+        78098, // Mace (blue infusion)
+        78056, // Mace (red infusion)
         78077, // Pistol
         78064, // Pistol (bound)
-        78047, // Pistol (blue)
-        78113, // Pistol (red)
+        78047, // Pistol (blue infusion)
+        78113, // Pistol (red infusion)
         78023, // Rifle
         78035, // Rifle (bound)
-        78083, // Rifle (blue)
-        78032, // Rifle (red)
+        78083, // Rifle (blue infusion)
+        78032, // Rifle (red infusion)
         78070, // Scepter
         78107, // Scepter (bound)
-        78099, // Scepter (blue)
-        78063, // Scepter (red)
+        78099, // Scepter (blue infusion)
+        78063, // Scepter (red infusion)
         78112, // Shield
         78075, // Shield (bound)
-        78092, // Shield (blue)
-        78093, // Shield (red)
+        78092, // Shield (blue infusion)
+        78093, // Shield (red infusion)
         78067, // Short Bow
         78017, // Short Bow (bound)
-        78055, // Short Bow (blue)
-        78091, // Short Bow (red)
+        78055, // Short Bow (blue infusion)
+        78091, // Short Bow (red infusion)
         78050, // Staff
         78015, // Staff (bound)
-        78078, // Staff (blue)
-        78080, // Staff (red)
+        78078, // Staff (blue infusion)
+        78080, // Staff (red infusion)
         78103, // Sword
         78101, // Sword (bound)
-        78072, // Sword (blue)
-        78061, // Sword (red)
+        78072, // Sword (blue infusion)
+        78061, // Sword (red infusion)
         78033, // Torch
         78042, // Torch (bound)
-        78040, // Torch (blue)
-        78111, // Torch (red)
+        78040, // Torch (blue infusion)
+        78111, // Torch (red infusion)
         78096, // Warhorn
         78026, // Warhorn (bound)
-        78109, // Warhorn (blue)
-        78044 // Warhorn (red)
+        78109, // Warhorn (blue infusion)
+        78044 // Warhorn (red infusion)
     ],
-    3393: [
+    3393: [ // Red weapons
         80959, // Axe
         80968, // Dagger
         80870, // Focus
@@ -185,7 +185,7 @@ const sabItems = {
 
 const sabContainers = {
     2867: [
-        78039, // Super Adventure Weapon Box (bound skin)
+        78039, // Super Adventure Weapon Box (bound orange skin)
         78071, // Kaiser Snake Weapon Box (King Toad)
         78049, // Kaiser Snake Weapon Box (Storm Wizard)
         78058 // Kaiser Snake Weapon Box (skin)
