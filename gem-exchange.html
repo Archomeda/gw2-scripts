@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GW2 Gem Exchange Charts</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/boost.js"></script>
+</head>
+<body>
+
+<div id="coinsToGems" style="width:100%; height:400px;"></div>
+<div id="gemsToCoins" style="width:100%; height:400px;"></div>
+
+<script>
+    $(function() {
+        $.get('data/coinsToGems.csv', function(csv) {
+            Highcharts.chart('coinsToGems', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Coins to gems'
+                },
+                subtitle: {
+                    text: 'Normalized to 100 gems'
+                },
+                xAxis: {
+                    type: 'datetime'
+                },
+                yAxis: {
+                    title: {
+                        text: 'Coins'
+                    },
+                    labels: {
+                        formatter: function() {
+                            return `${Math.floor(this.value / 10000)}g ${Math.floor(this.value / 100) % 100}s`;
+                        }
+                    }
+                },
+                tooltip: {
+                    shared: true,
+                    pointFormatter: function() {
+                        return `<span style="color:${this.color}">\u25CF</span> ${this.series.name}: <b>${Math.floor(this.y / 10000)}g ${Math.floor(this.y / 100) % 100}s</b><br/>`;
+                    }
+                },
+                data: {
+                    csv: csv
+                },
+                plotOptions: {
+                    series: {
+                        marker: {
+                            enabled: false
+                        },
+                        animation: false
+                    }
+                },
+                rangeSelector: {
+                    enabled: true,
+                    buttons: [
+                        { type: 'day', count: 1, text: '1d' },
+                        { type: 'day', count: 3, text: '3d' },
+                        { type: 'week', count: 1, text: '1w' },
+                        { type: 'day', count: 30, text: '1m' },
+                        { type: 'all', text: 'All' }
+                    ],
+                    selected: 2
+                }
+            });
+        });
+
+        $.get('data/gemsToCoins.csv', function(csv) {
+            Highcharts.chart('gemsToCoins', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Gems to coins'
+                },
+                subtitle: {
+                    text: 'Normalized to 100 gems'
+                },
+                xAxis: {
+                    type: 'datetime'
+                },
+                yAxis: {
+                    title: {
+                        text: 'Coins'
+                    },
+                    labels: {
+                        formatter: function() {
+                            return `${Math.floor(this.value / 10000)}g ${Math.floor(this.value / 100) % 100}s`;
+                        }
+                    }
+                },
+                tooltip: {
+                    shared: true,
+                    pointFormatter: function() {
+                        return `<span style="color:${this.color}">\u25CF</span> ${this.series.name}: <b>${Math.floor(this.y / 10000)}g ${Math.floor(this.y / 100) % 100}s</b><br/>`;
+                    }
+                },
+                data: {
+                    csv: csv
+                },
+                plotOptions: {
+                    series: {
+                        marker: {
+                            enabled: false
+                        },
+                        animation: false
+                    }
+                },
+                rangeSelector: {
+                    enabled: true,
+                    buttons: [
+                        { type: 'day', count: 1, text: '1d' },
+                        { type: 'day', count: 3, text: '3d' },
+                        { type: 'week', count: 1, text: '1w' },
+                        { type: 'day', count: 30, text: '1m' },
+                        { type: 'all', text: 'All' }
+                    ],
+                    selected: 2
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
