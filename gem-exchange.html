@@ -10,8 +10,8 @@
 </head>
 <body>
 
-<div id="coinsToGems" style="width:100%; height:400px;"></div>
-<div id="gemsToCoins" style="width:100%; height:400px;"></div>
+<div id="coinsToGems" style="width:100%; height:600px;"></div>
+<div id="gemsToCoins" style="width:100%; height:600px;"></div>
 
 <script>
     $(function() {
@@ -39,6 +39,12 @@
                         }
                     }
                 },
+                navigator: {
+                    enabled: true
+                },
+                scrollbar: {
+                    enabled: true
+                },
                 tooltip: {
                     shared: true,
                     pointFormatter: function() {
@@ -53,7 +59,8 @@
                         marker: {
                             enabled: false
                         },
-                        animation: false
+                        animation: false,
+                        showInNavigator: true
                     }
                 },
                 rangeSelector: {
@@ -94,6 +101,12 @@
                         }
                     }
                 },
+                navigator: {
+                    enabled: true
+                },
+                scrollbar: {
+                    enabled: true
+                },
                 tooltip: {
                     shared: true,
                     pointFormatter: function() {
@@ -108,7 +121,8 @@
                         marker: {
                             enabled: false
                         },
-                        animation: false
+                        animation: false,
+                        showInNavigator: true
                     }
                 },
                 rangeSelector: {
