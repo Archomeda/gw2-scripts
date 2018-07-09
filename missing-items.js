@@ -99,16 +99,12 @@ async function exec() {
         }
     }
 
-    try {
-        const missingItemIds = new Set(missingItems.map(item => item.id));
-        const gw2eItems = new Map(JSON.parse(await getItemsFromEfficiency([...missingItemIds])).map(item => [item.id, item]));
+    const missingItemIds = new Set(missingItems.map(item => item.id));
+    const gw2eItems = new Map(JSON.parse(await getItemsFromEfficiency([...missingItemIds])).map(item => [item.id, item]));
 
-        // Print
-        for (const item of missingItems) {
-            console.log(`${item.id} (${gw2eItems.has(item.id) ? gw2eItems.get(item.id).name : 'UNKNOWN'}): ${item.description}`);
-        }
-    } catch (err) {
-        console.error(err);
+    // Print
+    for (const item of missingItems) {
+        console.log(`${item.id} (${gw2eItems.has(item.id) ? gw2eItems.get(item.id).name : 'UNKNOWN'}): ${item.description}`);
     }
 }
 
