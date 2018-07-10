@@ -50,6 +50,7 @@ JSON array: <input type="text" id="missing-items-json">
         });
 
         $.getJSON('https://api.gw2efficiency.com/items?ids=all', items => {
+            items = items.filter(x => x.id < 200000);
             gw2eItemIds = new Set(items.map(i => i.id));
             gw2eItems = new Map(items.map(i => [i.id, i]));
             printMissingItems();
