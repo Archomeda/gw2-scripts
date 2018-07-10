@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GW2 API missing items</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+        html, body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 12pt;
+        }
+
+        .icon {
+            width: 32px;
+            height: 32px;
+        }
+    </style>
+</head>
+<body>
+
+    
+<h2>Missing items</h2>
+<p>
+    The list of items on the API is compared to GW2 Efficiency's list.
+    There are currently <strong id="missing-items-total">(loading...)</strong> items missing.
+</p>
+JSON array: <input type="text" id="missing-items-json">
+
+<p>
+    <table id="missing-items-list">
+        <tr>
+            <th>Icon</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Links</th>
+        </tr>
+    </table>
+</p>
+
+<script>
+    var apiItemIds;
+    var gw2eItemIds;
+    var gw2eItems;
+
+    $(function() {
+        $.getJSON('https://api.guildwars2.com/v2/items', items => {
+            apiItemIds = new Set(items);
+            printMissingItems();
+        });
+
+        $.getJSON('https://api.gw2efficiency.com/items?ids=all', items => {
+            gw2eItemIds = new Set(items.map(i => i.id));
+            gw2eItems = new Map(items.map(i => [i.id, i]));
+            printMissingItems();
+        });
+    });
+
+    function printMissingItems() {
+        if (!apiItemIds || !gw2eItemIds || !gw2eItems) {
+            return;
+        }
+        
+        var missingItemIds = [...new Set([...gw2eItemIds].filter(x => !apiItemIds.has(x)))].sort((a, b) => a - b);
+        $('#missing-items-total').text(missingItemIds.length.toLocaleString() + '/' + gw2eItemIds.size.toLocaleString());
+        $('#missing-items-json').val(JSON.stringify(missingItemIds));
+        for (var id of missingItemIds) {
+            var item = gw2eItems.get(id);
+            var chatlink = '[&' + btoa('\x02\x01' + int2char(id & 0xFF) + int2char((id >> 8) & 0xFF) + int2char((id >> 16) & 0xFF) + int2char((id >> 24) & 0xFF)) + ']';
+            var apiLink = '<a href="https://api.guildwars2.com/v2/items/' + id + '" target="_blank">API</a>';
+            var gw2eLink = '<a href="https://api.gw2efficiency.com/items/' + id + '" target="_blank">GW2E</a>';
+            var wikiLink = '<a href="https://wiki.guildwars2.com/index.php?title=Special:Search&search=' + encodeURIComponent(chatlink) + '" target="_blank">Wiki</a>';
+            var links = apiLink + ' ' + gw2eLink + ' ' + wikiLink;
+            $('#missing-items-list').append('<tr><td><img class="icon" src="' + item.image + '" /></td><td>' + id + '</td><td>' + item.name + '</td><td>' + links + '</td></tr>');
+        }
+    }
+
+    function int2char(int) {
+        return int === 0 ? '\x00' : String.fromCharCode(int);
+    }
+</script>
+
+</body>
+</html>
