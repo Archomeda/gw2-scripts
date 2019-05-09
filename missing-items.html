@@ -71,7 +71,7 @@ JSON array: <input type="text" id="missing-items-json">
             var apiLink = '<a href="https://api.guildwars2.com/v2/items/' + id + '" target="_blank">API</a>';
             var gw2eLink = '<a href="https://api.gw2efficiency.com/items/' + id + '" target="_blank">GW2E</a>';
             var wikiLink = '<a href="https://wiki.guildwars2.com/index.php?title=Special:Search&search=' + encodeURIComponent(chatlink) + '" target="_blank">Wiki</a>';
-            var links = apiLink + ' ' + gw2eLink + ' ' + wikiLink;
+            var links = [apiLink, gw2eLink, wikiLink, chatlink].join(' ');
             $('#missing-items-list').append('<tr><td><img class="icon" src="' + item.image + '" /></td><td>' + id + '</td><td>' + item.name + '</td><td>' + links + '</td></tr>');
         }
     }
