@@ -39,10 +39,10 @@ contra@^1.9.4:
     ticky "1.0.1"
 
 debug@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-3.0.1.tgz#0564c612b521dc92d9f2988f0549e34f9c98db64"
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-3.2.7.tgz#72580b7e9145fb39b6676f9c5e5fb100b934179a"
   dependencies:
-    ms "2.0.0"
+    ms "^2.1.1"
 
 encoding@^0.1.11:
   version "0.1.12"
@@ -124,9 +124,9 @@ lets-fetch@^2.0.0:
     isomorphic-fetch "^2.2.1"
     promise-control-flow "^1.2.3"
 
-ms@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
+ms@^2.1.1:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
 
 node-fetch@^1.0.1:
   version "1.7.2"
